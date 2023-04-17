@@ -5,17 +5,20 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Animated Card</title>
-      <link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<!-- When working with animation, Try to create finish product first.-->
 		<div class="card">
-			<h2 class="card-title">Something Awesome</h2>
-			<p class="card-body">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
-				repellendus!
-			</p>
-			<a href="#" class="button">Learn More</a>
+			<!-- Another div to give a bg-color without messing with the bg-img, thus if image were to change it won't affect how we see our content (Since we doing color:white, bg:black) -->
+			<div class="card-content">
+				<h2 class="card-title">Something Awesome</h2>
+				<p class="card-body">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
+					repellendus!
+				</p>
+				<a href="#" class="button">Learn More</a>
+			</div>
 		</div>
 	</body>
 </html>
