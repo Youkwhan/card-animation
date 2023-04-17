@@ -52,6 +52,24 @@ body {
 	/*locally scoped (nested element tags), give card-title::after a -padding, to offset the alinement*/
 	--padding: 1.5rem;
 	padding: var(--padding);
+
+	/* instead of using position:absolute, if we can use transform then we do best practice for performance rather than setting a width and such */
+	transform: translateY(65%);
+	transition: transform 500ms ease;
+}
+
+.card-content > *:not(.card-title) {
+	opacity: 0;
+	/* opacirty animation fade in and out */
+	transition: opacity 500ms linear;
+}
+
+.card:hover .card-content {
+	transform: translateY(0);
+}
+
+.card:hover .card-content > *:not(.card-title) {
+	opacity: 1;
 }
 
 /*  Use postiion absolute to break it outside of the .card padding we are inside of*/
@@ -74,7 +92,7 @@ body {
 
 	/* we had to use REM for padding, Bcz card-title font is bigger than card-content font, thus too big we need padding size to match card-content (html font) padding (since thats where we offset it) instead of parent's font size*/
 	left: calc(var(--padding) * -1);
-	bottom: 0;
+	bottom: -2px;
 
 	background-color: var(--clr-accent-400);
 	transform: scaleX(0);
