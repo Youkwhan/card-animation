@@ -35,7 +35,8 @@ body {
 	transition: transform 500ms ease;
 }
 
-.card:hover {
+.card:hover,
+.card:focus-within {
 	/* when we do scale subtle is better */
 	transform: scale(1.05);
 }
@@ -58,9 +59,14 @@ body {
 	transition: transform 500ms ease;
 }
 
-.card:hover .card-content {
+.card:hover .card-content,
+.card:focus-within .card-content {
 	transform: translateY(0);
 	transition-delay: 500ms;
+}
+
+.card:focus-within .card-content {
+	transition-duration: 0ms;
 }
 
 .card-content > *:not(.card-title) {
@@ -69,8 +75,10 @@ body {
 	transition: opacity 500ms linear;
 }
 
-.card:hover .card-content > *:not(.card-title) {
+.card:hover .card-content > *:not(.card-title),
+.card:focus-within .card-content > *:not(.card-title) {
 	opacity: 1;
+	transition-delay: 800ms;
 }
 
 /*  Use postiion absolute to break it outside of the .card padding we are inside of*/
@@ -101,7 +109,8 @@ body {
 	transform-origin: left;
 }
 
-.card:hover .card-title::after {
+.card:hover .card-title::after,
+.card:focus-within .card-title::after {
 	/* line animation */
 	transform: scaleX(1);
 }
