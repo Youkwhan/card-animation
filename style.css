@@ -16,7 +16,7 @@ body {
 	min-height: 100vh;
 	place-items: center;
 	line-height: 1.6;
-	background: var(--clr-neutral-900);
+	background-color: var(--clr-neutral-900);
 	font-family: sans-serif;
 }
 
@@ -26,14 +26,77 @@ body {
 	background-size: cover;
 	padding: 10rem 0 0;
 
+	/*card width is dictated by text content*/
 	max-width: 35ch;
+	
+   border-radius: 0.5rem;
+	overflow: hidden;
+
+   transition: transform 500ms ease;
 }
 
+.card:hover{
+   transform: scale(1.05);
+}
+
+/* our content's faded background, For readability regardless of img.*/
 .card-content {
-	padding: 1.5em;
+	/* padding: 1.5rem; */
 	background: linear-gradient(
 		hsl(0 0% 0% / 0),
 		hsl(20 0% 0% / 0.3) 20%,
 		hsl(0 0% 0% / 1)
 	);
+
+	/*locally scoped (nested element tags), give card-title::after a -padding, to offset the alinement*/
+	--padding: 1.5rem;
+	padding: var(--padding);
+}
+
+/*  Use postiion absolute to break it outside of the .card padding we are inside of*/
+.card-title {
+	/* So, ::after will have matching width and position with the container, which is a BLOCK thus entire row*/
+	position: relative;
+	/*width:max-content to fix too content size*/
+	width: max-content;
+	/*+ max-width:100% would prevent any overflow with longer text */
+
+	/* outline: 1px solid red; */
+}
+.card-title::after {
+	/* psuedoEl always need content property */
+	content: "";
+	position: absolute;
+
+	width: calc(100% + var(--padding));
+	height: 4px;
+
+	/* we had to use REM for padding, Bcz card-title font is bigger than card-content font, thus too big we need padding size to match card-content (html font) padding (since thats where we offset it) instead of parent's font size*/
+	left: calc(var(--padding) * -1);
+	bottom: 0;
+
+	background-color: var(--clr-accent-400);
+}
+
+.card-body{
+   /* one way to lighten text LOL DONT use opacity oops*/
+   color: rgb(255 255 255 / 0.85);
+}
+
+.button {
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+	color: var(--clr-neutral-900);
+	background-color: var(--clr-accent-400);
+	padding: 0.5em 1.25em;
+   border-radius: 0.25em;
+   
+   text-transform: uppercase;
+   font-weight: bold;
+}
+
+.button:hover,
+.button:focus {
+	background-color: var(--clr-neutral-100);
 }
