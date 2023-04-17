@@ -78,7 +78,7 @@ body {
 	bottom: -2px;
 
 	background-color: var(--clr-accent-400);
-	
+
 	transition: transform 500ms ease;
 	transform-origin: left;
 }
@@ -142,7 +142,20 @@ body {
 		transition-delay: 800ms;
 	}
 
-	.card-title::after{
+	.card-title::after {
 		transform: scaleX(0);
+	}
+}
+
+/* People who prefer to disable animation */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+		transition-delay: 0ms !important;
 	}
 }
