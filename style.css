@@ -58,14 +58,15 @@ body {
 	transition: transform 500ms ease;
 }
 
+.card:hover .card-content {
+	transform: translateY(0);
+	transition-delay: 500ms;
+}
+
 .card-content > *:not(.card-title) {
 	opacity: 0;
 	/* opacirty animation fade in and out */
 	transition: opacity 500ms linear;
-}
-
-.card:hover .card-content {
-	transform: translateY(0);
 }
 
 .card:hover .card-content > *:not(.card-title) {
