@@ -28,15 +28,16 @@ body {
 
 	/*card width is dictated by text content*/
 	max-width: 35ch;
-	
-   border-radius: 0.5rem;
+
+	border-radius: 0.5rem;
 	overflow: hidden;
 
-   transition: transform 500ms ease;
+	transition: transform 500ms ease;
 }
 
-.card:hover{
-   transform: scale(1.05);
+.card:hover {
+	/* when we do scale subtle is better */
+	transform: scale(1.05);
 }
 
 /* our content's faded background, For readability regardless of img.*/
@@ -76,11 +77,19 @@ body {
 	bottom: 0;
 
 	background-color: var(--clr-accent-400);
+	transform: scaleX(0);
+	transition: transform 500ms ease;
+	transform-origin: left;
 }
 
-.card-body{
-   /* one way to lighten text LOL DONT use opacity oops*/
-   color: rgb(255 255 255 / 0.85);
+.card:hover .card-title::after {
+	/* line animation */
+	transform: scaleX(1);
+}
+
+.card-body {
+	/* one way to lighten text LOL DONT use opacity oops*/
+	color: rgb(255 255 255 / 0.85);
 }
 
 .button {
@@ -90,10 +99,10 @@ body {
 	color: var(--clr-neutral-900);
 	background-color: var(--clr-accent-400);
 	padding: 0.5em 1.25em;
-   border-radius: 0.25em;
-   
-   text-transform: uppercase;
-   font-weight: bold;
+	border-radius: 0.25em;
+
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .button:hover,
