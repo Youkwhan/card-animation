@@ -53,32 +53,6 @@ body {
 	/*locally scoped (nested element tags), give card-title::after a -padding, to offset the alinement*/
 	--padding: 1.5rem;
 	padding: var(--padding);
-
-	/* instead of using position:absolute, if we can use transform then we do best practice for performance rather than setting a width and such */
-	transform: translateY(65%);
-	transition: transform 500ms ease;
-}
-
-.card:hover .card-content,
-.card:focus-within .card-content {
-	transform: translateY(0);
-	transition-delay: 500ms;
-}
-
-.card:focus-within .card-content {
-	transition-duration: 0ms;
-}
-
-.card-content > *:not(.card-title) {
-	opacity: 0;
-	/* opacirty animation fade in and out */
-	transition: opacity 500ms linear;
-}
-
-.card:hover .card-content > *:not(.card-title),
-.card:focus-within .card-content > *:not(.card-title) {
-	opacity: 1;
-	transition-delay: 800ms;
 }
 
 /*  Use postiion absolute to break it outside of the .card padding we are inside of*/
@@ -104,7 +78,7 @@ body {
 	bottom: -2px;
 
 	background-color: var(--clr-accent-400);
-	transform: scaleX(0);
+	
 	transition: transform 500ms ease;
 	transform-origin: left;
 }
@@ -136,4 +110,39 @@ body {
 .button:hover,
 .button:focus {
 	background-color: var(--clr-neutral-100);
+}
+
+/* primary pointing device i.e. mouse */
+@media (hover) {
+	.card-content {
+		/* instead of using position:absolute, if we can use transform then we do best practice for performance rather than setting a width and such */
+		transform: translateY(65%);
+		transition: transform 500ms ease;
+	}
+
+	.card:hover .card-content,
+	.card:focus-within .card-content {
+		transform: translateY(0);
+		transition-delay: 500ms;
+	}
+
+	.card:focus-within .card-content {
+		transition-duration: 0ms;
+	}
+
+	.card-content > *:not(.card-title) {
+		opacity: 0;
+		/* opacirty animation fade in and out */
+		transition: opacity 500ms linear;
+	}
+
+	.card:hover .card-content > *:not(.card-title),
+	.card:focus-within .card-content > *:not(.card-title) {
+		opacity: 1;
+		transition-delay: 800ms;
+	}
+
+	.card-title::after{
+		transform: scaleX(0);
+	}
 }
